@@ -24,9 +24,9 @@ Tip 2: you can also add an image using data-image tag
                 </a>
             </li>
             <li>
-                <a class="nav-link" href="./table.html">
-                    <i class="nc-icon nc-notes"></i>
-                    <p>Table List</p>
+                <a class="nav-link" href="http://127.0.0.1:8000/airlines">
+                    <i class="nc-icon nc-planet"></i>
+                    <p>Airlines</p>
                 </a>
             </li>
             <li>
