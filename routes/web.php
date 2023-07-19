@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AirlineController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +17,4 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('admin.dashboard');
 });
+Route::resource('airlines', AirlineController::class);
