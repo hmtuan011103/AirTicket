@@ -11,47 +11,59 @@ Tip 2: you can also add an image using data-image tag
             </a>
         </div>
         <ul class="nav">
-            <li class="nav-item active">
-                <a class="nav-link" href="dashboard.html">
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('dashboard') }}">
                     <i class="nc-icon nc-chart-pie-35"></i>
                     <p>Dashboard</p>
                 </a>
             </li>
-            <li>
-                <a class="nav-link" href="./user.html">
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('flight-route.index') }}">
                     <i class="nc-icon nc-circle-09"></i>
-                    <p>User Profile</p>
+                    <p>Flight Route</p>
                 </a>
             </li>
-            <li>
-                <a class="nav-link" href="http://127.0.0.1:8000/airlines">
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('airlines.index') }}">
                     <i class="nc-icon nc-planet"></i>
                     <p>Airlines</p>
                 </a>
             </li>
-            <li>
+            <li class="nav-item">
                 <a class="nav-link" href="./typography.html">
                     <i class="nc-icon nc-paper-2"></i>
                     <p>Typography</p>
                 </a>
             </li>
-            <li>
+            <li class="nav-item">
                 <a class="nav-link" href="./icons.html">
                     <i class="nc-icon nc-atom"></i>
                     <p>Icons</p>
                 </a>
             </li>
-            <li>
+            <li class="nav-item">
                 <a class="nav-link" href="./maps.html">
                     <i class="nc-icon nc-pin-3"></i>
                     <p>Maps</p>
                 </a>
             </li>
-            <li>
+            <li class="nav-item">
                 <a class="nav-link" href="./notifications.html">
                     <i class="nc-icon nc-bell-55"></i>
                     <p>Notifications</p>
                 </a>
+            </li>
+            <li class="nav-item">
+                <form action="{{ route('admin-auth.destroy', auth()->guard('admin')->user()) }}" method="POST" class="nav-link" style="cursor: pointer">
+                    @csrf
+                    @method('DELETE')
+                    <i class="nc-icon nc-bell-55"></i>
+                    <button id="btn-logout" class="d-none">Logout</button>
+                    <label for="btn-logout" style="cursor: pointer">
+                        <p>Logout</p>
+                    </label>
+                </form>
+
             </li>
         </ul>
     </div>

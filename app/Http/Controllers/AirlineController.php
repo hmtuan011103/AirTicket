@@ -12,12 +12,13 @@ class AirlineController extends Controller
 {
     const OBJECT = 'admin.airlines';
     const DOT = '.';
+
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $data = Airline::all();
+        $data = Airline::query()->latest()->get();
         return view(self::OBJECT . self::DOT . __FUNCTION__, compact('data'));
     }
 
@@ -84,15 +85,15 @@ class AirlineController extends Controller
      */
     public function destroy(Airline $airline)
     {
-        
+
         $image = 'storage/'.$airline->image;
-        // dd($image);
-        if ($airline) {
-            if (File::exists($image)) {
-                File::delete($image);
-            }
-            $airline->delete();
+
+        if (File::exists($image)) {
+            File::delete($image);
         }
+        $airline->delete();
+
+        toastr()->success('Data has been deleted successfully!');
         return back();
     }
 }

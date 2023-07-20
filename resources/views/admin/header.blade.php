@@ -12,5 +12,6 @@
 <link href="/assets/css/bootstrap.min.css" rel="stylesheet" />
 <link href="/assets/css/light-bootstrap-dashboard.css?v=2.0.0 " rel="stylesheet" />
 <!-- CSS Just for demo purpose, don't include it in your project -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/fontawesome.min.css">
 <link href="/assets/css/demo.css" rel="stylesheet" />
 @yield('header')

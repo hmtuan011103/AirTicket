@@ -1,7 +1,8 @@
 <?php
-
-use App\Http\Controllers\AirlineController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AirlineController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\FlightRouteController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,7 +15,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('admin.dashboard');
+Route::resource('admin-auth', AdminController::class);
+Route::middleware('admin')->prefix('admin')->group(function(){
+
+    Route::get('/', function () {
+        return view('admin.dashboard');
+    })->name('dashboard');
+
+    Route::resource('airlines', AirlineController::class);
+
+    Route::resource('flight-route', FlightRouteController::class);
 });
-Route::resource('airlines', AirlineController::class);
+
