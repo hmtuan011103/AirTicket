@@ -3,6 +3,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AirlineController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\FlightRouteController;
+use App\Http\Controllers\PlaneController;
+use App\Http\Controllers\FlightController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,5 +27,11 @@ Route::middleware('admin')->prefix('admin')->group(function(){
     Route::resource('airlines', AirlineController::class);
 
     Route::resource('flight-route', FlightRouteController::class);
+
+    Route::resource('planes', PlaneController::class);
+
+    Route::resource('flights', FlightController::class);
+
+
 });
 

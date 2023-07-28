@@ -30,15 +30,15 @@ Tip 2: you can also add an image using data-image tag
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="./typography.html">
+                <a class="nav-link" href={{ route('planes.index') }}>
                     <i class="nc-icon nc-paper-2"></i>
-                    <p>Typography</p>
+                    <p>Planes</p>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="./icons.html">
+                <a class="nav-link" href="{{ route('flights.index') }}">
                     <i class="nc-icon nc-atom"></i>
-                    <p>Icons</p>
+                    <p>Flights</p>
                 </a>
             </li>
             <li class="nav-item">

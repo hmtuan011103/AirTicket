@@ -4,14 +4,14 @@
         *{
             font-size: 14px;
         }
-        #flight-route_filter{
+        #flights_filter{
             margin-right: 8px;
         }
-        #flight-route_filter label{
+        #flights_filter label{
             width: 100%;
             text-align: right;
         }
-        #flight-route_filter input{
+        #flights_filter input{
             width: 80%;
         }
     </style>
@@ -21,16 +21,21 @@
 @section('content')
     <div class="container-fluid mt-5">
         <h3 class="mt-3 mb-3 text-center">
-            List of flight route
+            List of flights
         </h3>
         <h1>
-            <a href="{{ route('flight-route.create')}}" class="btn btn-primary mb-3">Add Flight Route</a>
+            <a href="{{ route('flights.create')}}" class="btn btn-primary mb-3">Add Flight</a>
         </h1>
-        <table id="flight-route" class="table table-striped pe-2  ps-2" style="width:100%; font-size:14px">
+        <table id="flights" class="table table-striped pe-2  ps-2" style="width:100%; font-size:14px">
             <thead>
             <tr>
-                <th>Place Start</th>
-                <th>Place End</th>
+                <th>Plane Name</th>
+                <th>Class Business</th>
+                <th>Class Economy</th>
+                <th>Flight Time Total</th>
+                <th>Flight Date</th>
+                <th>Flight Time Start</th>
+                <th>Flight Route</th>
                 <th>Create Date</th>
                 <th>Action</th>
             </tr>
@@ -38,13 +43,22 @@
             <tbody>
             @foreach($data as $item)
                 <tr>
-                    <td>{{$item->place_start}}</td>
-                    <td>{{$item->place_end}}</td>
+                    <td>{{$item->plane->name}}</td>
+                    <td>{{$item->class_business}}</td>
+                    <td>{{$item->class_economy}}</td>
+                    <td>{{$item->flight_time_total}}</td>
+                    <td>{{$item->flight_date}}</td>
+                    <td>{{$item->flight_time_start}}</td>
+                    <td>
+                        {{$item->flightRoute->place_start}}
+                        <p class="p-0 m-0 fs-6">---------------- đến ----------------</p>
+                        {{ $item->flightRoute->place_end }}
+                    </td>
                     <td>{{$item->created_at}}</td>
                     <td>
-                        <a class="btn btn-success" href="{{ route('flight-route.edit',$item)}}">Edit</a>
+                        <a class="btn btn-success" href="{{ route('flights.edit',$item)}}">Edit</a>
                         <button class="btn btn-danger" onclick="document.getElementById('item-{{$item->id}}').submit();">Delete</button>
-                        <form action="{{ route('flight-route.destroy',$item)}}" id="item-{{$item->id}}" method="post">
+                        <form action="{{ route('flights.destroy',$item)}}" id="item-{{$item->id}}" method="post">
                             @csrf
                             @method('delete')
                         </form>
@@ -61,6 +75,6 @@
     <script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.5/js/dataTables.bootstrap5.min.js"></script>
     <script>
-        new DataTable('#flight-route');
+        new DataTable('#flights');
     </script>
 @endsection

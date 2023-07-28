@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class FlightRoute extends Model
 {
@@ -38,4 +39,8 @@ class FlightRoute extends Model
         'Sân bay Cà Mau-CAH-Cà Mau',
         'Sân bay Côn Đảo-VCS-Bà Rịa Vũng Tàu',
     ];
+
+    public function flight(): HasOne {
+        return $this->hasOne(Flight::class);
+    }
 }
