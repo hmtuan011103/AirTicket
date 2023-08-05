@@ -45,7 +45,15 @@ class FlightController extends Controller
         // Custome and save time data to database
         $data['flight_time_total'] = $request->input('flight_time_total_hour') . 'h' . ($timeTotalMinutes ? $timeTotalMinutes.'p' : '');
         $data['flight_time_start'] = ($timeStartHour < 10 ? '0'.$timeStartHour : $timeStartHour) . ':' . ($timeStartMinutes ?? '00');
-        Flight::create($data);
+        $flight = Flight::query()->create($data);
+        if($request->input('break_time') !== null) {
+            $flight->flightDetails()->create([
+                'flight_id' => $flight->id,
+                'break_time' => $request->input('break_time'),
+                'intermediate_airport' => $request->input('intermediate_airport'),
+            ]);
+        }
+
         toastr()->success('Data has been saved successfully!');
         return redirect()->route('flights.index');
     }

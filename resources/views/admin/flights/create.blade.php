@@ -25,7 +25,20 @@
                 </div>
                 <div class="mb-3">
                     <label for="" class="form-label">Class Economy:</label>
-                    <input type="number"  class="form-control" name="class_economy">
+                    <input type="number" min="0" class="form-control" name="class_economy">
+                </div>
+                <div class="mb-3">
+                    <label for="" class="form-label">Break Time (Minutes):</label>
+                    <input type="number" min="0" class="form-control" name="break_time">
+                </div>
+                <div class="mb-3">
+                    <label for="" class="form-label">Intermediate Airport:</label>
+                    <select class="form-select" aria-label="Default select example" name="intermediate_airport">
+                        <option value="" hidden></option>
+                        @foreach(\App\Models\FlightRoute::$place as $place)
+                            <option value="{{ $place }}">{{ $place }}</option>
+                        @endforeach
+                    </select>
                 </div>
             </div>
             <div class="col-6">

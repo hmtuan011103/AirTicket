@@ -1,4 +1,7 @@
 <?php
+
+use App\Http\Controllers\FoundFlightController;
+use App\Http\Controllers\TicketController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AirlineController;
 use App\Http\Controllers\AdminController;
@@ -32,6 +35,33 @@ Route::middleware('admin')->prefix('admin')->group(function(){
 
     Route::resource('flights', FlightController::class);
 
+    Route::resource('tickets', TicketController::class);
 
 });
 
+
+Route::get('/home', function () {
+    return view('client.home');
+});
+Route::get('flight-client', [FoundFlightController::class, 'index'])
+    ->name('home');
+Route::post('flight-client', [FoundFlightController::class, 'store'])
+    ->name('found.flight.store');
+
+
+Route::get('/flight', function () {
+    return view('client.flight');
+});
+
+
+
+
+Route::get('/booking', function () {
+    return view('client.bookticket');
+});
+Route::get('/payment', function () {
+    return view('client.payment');
+});
+Route::get('/checkout', function () {
+    return view('client.checkout');
+});

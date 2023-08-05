@@ -56,6 +56,7 @@
                     </td>
                     <td>{{$item->created_at}}</td>
                     <td>
+                        <a class="btn btn-primary" href="{{ route('flights.show',$item)}}">Detail</a>
                         <a class="btn btn-success" href="{{ route('flights.edit',$item)}}">Edit</a>
                         <button class="btn btn-danger" onclick="document.getElementById('item-{{$item->id}}').submit();">Delete</button>
                         <form action="{{ route('flights.destroy',$item)}}" id="item-{{$item->id}}" method="post">

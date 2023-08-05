@@ -15,7 +15,7 @@ class FlightRoute extends Model
         'place_end'
     ];
 
-    public static array $place= [
+    public static array $place = [
         'Sân bay Quốc tế Nội Bài-HAN-Hà Nội',
         'Sân bay Quốc tế Tân Sơn Nhất-SGN-Hồ Chí Minh',
         'Sân bay Quốc tế Đà Nẵng-DAD-Đà Nẵng',
@@ -43,4 +43,31 @@ class FlightRoute extends Model
     public function flight(): HasOne {
         return $this->hasOne(Flight::class);
     }
+
+
+    public static array $theCity = [
+        'HAN-Hà Nội',
+        'SGN-Hồ Chí Minh',
+        'DAD-Đà Nẵng',
+        'VDO-Quảng Ninh',
+        'HPH-Hải Phòng',
+        'VII-Nghệ An',
+        'HUI-Huế',
+        'CXR-Khánh Hòa',
+        'DLI-Lâm Đồng',
+        'UIH-Bình Định',
+        'VCA-Cần Thơ',
+        'PQC-Kiên Giang',
+        'DIN-Điện Biên',
+        'THD-Thanh Hóa',
+        'VDH-Quảng Bình',
+        'VCL-Quảng Nam',
+        'TBB-Phú Yên',
+        'PXU-Gia Lai',
+        'BMV-Đắk Lăk',
+        'VKG-Kiên Giang',
+        'CAH-Cà Mau',
+        'VCS-Bà Rịa Vũng Tàu',
+    ];
+
 }

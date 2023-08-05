@@ -24,15 +24,18 @@ class StoreFlightRequest extends FormRequest
      */
     public function rules(): array
     {
-        $airplane = Plane::find($this->input('plane_id'));
         return [
             'plane_id' => 'required',
             'class_business' =>  [
-                'required','required_if:plane_id,!=,null', 'integer', 'min:0', new FlightClass
+                'required_with:plane_id',
+                'integer', 'min:0', new FlightClass
             ],
             'class_economy' => [
-                'required','required_if:plane_id,!=,null', 'integer', 'min:0', new FlightClass
+                'required_with:plane_id',
+                'integer', 'min:0', new FlightClass
             ],
+            'break_time' => 'required_with:intermediate_airport|integer|min:0|nullable',
+            'intermediate_airport' => 'required_with:break_time|nullable',
             'flight_date' => 'required|after:today',
             'flight_route_id' => 'required',
             'flight_time_start_hour' => 'required',

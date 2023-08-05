@@ -15,16 +15,20 @@ class FlightClass implements ValidationRule
     public function validate(string $attribute, mixed $value, Closure $fail): void
     {
         $airplaneId = request()->input('plane_id');
+        $economySeats = request()->input('class_economy');
+        $businessSeats = request()->input('class_business');
         if ($airplaneId) {
             $airplane = \App\Models\Plane::find($airplaneId);
             if ($airplane) {
                 $totalSeats = $airplane->seat_total;
-                $economySeats = request()->input('class_economy', 0);
-                $businessSeats = request()->input('class_business', 0);
                 $sumSeats = $economySeats + $businessSeats;
-                if($sumSeats > $totalSeats) {
-                    $fail('The sum of economy seats and business seats cannot exceed the total number of seats on the airplane.');
+                if($sumSeats > $totalSeats || $economySeats === 0 || $businessSeats === 0) {
+                    $fail('Please re-enter the plane seat number');
                 }
+            }
+        } else {
+            if(!$economySeats || !$businessSeats){
+                $fail('Please choose plane');
             }
         }
     }

@@ -42,15 +42,9 @@ Tip 2: you can also add an image using data-image tag
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="./maps.html">
+                <a class="nav-link" href="{{ route('tickets.index') }}">
                     <i class="nc-icon nc-pin-3"></i>
-                    <p>Maps</p>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="./notifications.html">
-                    <i class="nc-icon nc-bell-55"></i>
-                    <p>Notifications</p>
+                    <p>Tickets</p>
                 </a>
             </li>
             <li class="nav-item">
